@@ -8,6 +8,8 @@ return {
       vim.g.oxocarbon_disable_background = true
       -- Apply the theme
       vim.cmd([[colorscheme oxocarbon]])
+      -- Clear the background explicitly
+      vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
     end,
   },
 }

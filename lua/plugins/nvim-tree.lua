@@ -4,6 +4,21 @@ return {
     'nvim-tree/nvim-web-devicons', -- optional, for file icons
   },
   config = function()
+    local function get_centered_window_position()
+      local editor_width = vim.api.nvim_get_option("columns")
+      local editor_height = vim.api.nvim_get_option("lines")
+
+      local width = 100
+      local height = 40
+
+      local row = math.floor((editor_height - height) / 2)
+      local col = math.floor((editor_width - width) / 2)
+
+      return row, col
+    end
+
+    local row, col = get_centered_window_position()
+
     require('nvim-tree').setup {
 
       view = {
@@ -11,15 +26,17 @@ return {
           enable = true,           -- Enable floating window
           open_win_config = {
             relative = 'editor',
-            border = 'rounded',    -- You can change this to 'single', 'double', 'shadow', etc.
-            width = 40,            -- Set width of the floating window
-            height = 30,           -- Set height of the floating window
-            row = 1,               -- Vertical positioning (0 = top)
-            col = 1,               -- Horizontal positioning (0 = left)
+            border = 'rounded',
+            width = 100,
+            height = 40,
+            row = row,              -- Centered row position
+            col = col,              -- Centered col position
           },
         },
-        width = 40,                 -- Set the width of the tree panel
+        width = 40,                -- Set the width of the tree panel
+        side = 'left',             -- This will be ignored in floating mode
       },
+
       -- Do not show git ignored files
       git = {
         enable = true,
@@ -40,12 +57,6 @@ return {
 
       -- Update the tree when changing working directory
       update_cwd = true,
-
-      -- Show LSP symbols in the sidebar
-      view = {
-        width = 30,
-        side = 'left',
-      },
 
       -- Actions for opening and closing nodes
       actions = {

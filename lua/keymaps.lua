@@ -9,3 +9,7 @@ map("n", "<leader>z", "<leader>bd", { silent = false })
 map("", "w", "<Plug>CamelCaseMotion_w", { silent = true })
 map("", "b", "<Plug>CamelCaseMotion_b", { silent = true })
 map("", "e", "<Plug>CamelCaseMotion_e", { silent = true })
+
+map("n", "<Tab>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+map("n", "<leader>z", ":bd<CR>", { noremap = true, silent = true })
