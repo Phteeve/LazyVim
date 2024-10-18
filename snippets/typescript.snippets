@@ -1,0 +1,161 @@
+snippet cl "console.log"
+    console.log(${0})
+
+snippet import "import from"
+    import ${1} from '${0}'
+
+snippet rfc "function component"
+    type props = {
+    	${0},
+    }
+    
+    export default function ${1}({ ${2} }: props)  {
+    	return <div></div>
+    }
+
+snippet rdx "function component"
+    import { useSelector } from 'react-redux'
+    import { useActions, useSelectState } from 'src/hooks/redux'
+    import { actions, selectors } from 'src/state/view/app'
+    
+    // const {} = selectors
+    
+    const s = cx()
+    
+    type state = {
+      ${5}
+    }
+    
+    export const ${1} = (${2}) => {
+      const { ${3} } = useActions(actions)
+      const { ${4} } = useSelectState(['view', 'app']) as state
+      // const {  } = useSelector() 
+    
+    	return div([])
+    }
+
+snippet jest "test"
+    describe("${1}", () => {
+    	it("${0}", () => {
+    		const { container } = render(
+    			${2}
+    		)
+    	})
+    })
+
+snippet trdx "test redux component"
+    /**
+     * @jest-environment jsdom
+     */
+    
+    // import userEvent from '@testing-library/user-event'
+    import { mockStore, render } from 'src/test/redux-utils'
+    
+    import h from 'react-hyperscript'
+    
+    import {${2}} from './${1}'
+    
+    describe("${1}", () => {
+    	it("${0}", () => {
+    		const store = mockStore({
+    			view: {
+    				app: {
+    					collectionSizeInput: { value: '1', error: false },
+    					verifiedCollectionSize: 100,
+    				},
+    			},
+    		})
+    
+    		const { container } = render(
+    			h(${2}), { store }
+    		)
+    	})
+    })
+
+snippet tmock "mock function import"
+		jest.mock('./${1}')
+		import { ${2} } from './${1}'
+		const ${3} = mocked(${2}, true)
+		${3}.mockRestore()
+		${3}.mockReturnValue({})
+
+snippet desc "describe test"
+		describe("${1}", () => {
+			${0}
+		})
+
+snippet tfn "test fn"
+    const fn = jest.fn()
+
+snippet it "it test"
+		it("${1}", () => {
+			${0}
+		})
+
+snippet before "before test"
+		beforeEach(() => {
+			${0}
+		})
+
+snippet mrfc "mock react component"
+		jest.mock('./${1}')
+		import {${2}} from './${1}'
+		mocked(${2}, true).mockReturnValue(h('p',['${1}-component']))
+
+snippet trender "test render"
+    const { ${1} } = render(
+    	h(${2}, { ${0} })
+    )
+
+snippet tstate "test render container"
+    const store = mockStore({
+      view: {
+        app: {
+    			${1}: { value: '1' }
+        },
+      },
+    })
+    
+    const { container } = render(h(${2}), { store })
+
+snippet tcontainer "test render container"
+    const { container } = render(
+    	h(${1})
+    )
+
+snippet tvariant "test component variant"
+    it("renders ${1} variant", () => {
+      const fn = jest.fn()
+    
+      const { getByText } = render(
+        h(${2}, { variant: ""${3} })
+      )
+    
+      const test = getByText("${4}")
+      expect(test).toBeInTheDocument()
+    })
+
+snippet tinput "test text input"
+    const store = mockStore({
+      view: {
+        app: {
+    			${1}: { value: '1' }
+        },
+      },
+    })
+    
+    const { container } = render(h(${2}), { store })
+    
+    const test = container.querySelector('#${1}')
+    expect(test).not.toBeNull()
+    
+    if (test !== null) {
+      const el = test as HTMLInputElement
+    
+      expect(el.defaultValue).toEqual('1')
+    
+      userEvent.type(el, '123')
+    
+      expect(el.defaultValue).toBe('1123')
+      expect(store.getState().view.app.${1}.value).toBe(1123)
+    }

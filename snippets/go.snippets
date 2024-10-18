@@ -1,0 +1,17 @@
+snippet pl "fmt.Println"
+	fmt.Println(${0})
+
+snippet ie "if err not nil"
+  if err != nil {
+    return ${0}err
+  }
+
+snippet fr "for range"
+  for _, ${2} := range ${1} {
+      ${0}
+  }
+
+snippet fm "function method"
+  func (${1}) ${2}(${3}) (${4}) {
+    ${0}
+  }
