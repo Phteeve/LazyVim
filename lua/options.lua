@@ -22,6 +22,7 @@ vim.o.foldmethod = 'manual'
 vim.o.foldcolumn = '0'
 vim.o.statusline = '%t%m'
 vim.o.number = true
+vim.opt.undofile = true
 
 vim.cmd('set nocompatible')
 vim.cmd('set noshowmode')
