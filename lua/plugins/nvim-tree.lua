@@ -34,7 +34,6 @@ return {
           },
         },
         width = 40,                -- Set the width of the tree panel
-        side = 'left',             -- This will be ignored in floating mode
       },
 
       -- Do not show git ignored files
@@ -84,9 +83,12 @@ return {
       },
     }
 
-    -- Optional: Keybindings for easier tree navigation
     vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
     vim.api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = true })
     vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
+
+    vim.cmd([[
+        :hi NvimTreeNormalFloat guibg=NONE
+      ]])
   end
 }

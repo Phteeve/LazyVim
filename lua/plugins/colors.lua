@@ -7,22 +7,44 @@ return {
       -- Set background transparency
       vim.g.oxocarbon_disable_background = true
 
-      -- Apply the theme
-      vim.cmd([[colorscheme oxocarbon]])
-
       -- Clear the background for various GUI elements
-      vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
-      vim.cmd([[hi NormalFloat guibg=NONE ctermbg=NONE]]) -- Floating windows
-      vim.cmd([[hi FloatBorder guibg=NONE ctermbg=NONE]]) -- Floating window border
-      vim.cmd([[hi SignColumn guibg=NONE ctermbg=NONE]]) -- Sign column
-      vim.cmd([[hi StatusLine guibg=NONE ctermbg=NONE]]) -- Status line
-      vim.cmd([[hi TabLine guibg=NONE ctermbg=NONE]]) -- Tab line
-      vim.cmd([[hi LineNr guibg=NONE ctermbg=NONE]]) -- Line numbers
-      vim.cmd([[hi NonText guibg=NONE ctermbg=NONE]]) -- Non-text characters
-      vim.cmd([[hi CursorLine guibg=NONE ctermbg=NONE]]) -- Cursor line
-      vim.cmd([[hi Pmenu guibg=NONE ctermbg=NONE]]) -- Popup menu
-      vim.cmd([[hi PmenuSel guibg=NONE ctermbg=NONE]]) -- Selected popup menu item
+      vim.cmd([[
+        colorscheme oxocarbon
+        hi Normal guibg=NONE ctermbg=NONE
+        hi NormalNC guibg=NONE ctermbg=NONE
+        hi NormalFloat guibg=NONE ctermbg=NONE
+        hi NormalFloatNC guibg=NONE ctermbg=NONE
+        hi FloatBorder guibg=NONE ctermbg=NONE
+        hi FloatBorderNC guibg=NONE ctermbg=NONE
+        hi SignColumn guibg=NONE ctermbg=NONE
+        hi SignColumnNC guibg=NONE ctermbg=NONE
+        hi StatusLine guibg=NONE ctermbg=NONE
+        hi StatusLineNC guibg=NONE ctermbg=NONE
+        hi TabLine guibg=NONE ctermbg=NONE
+        hi TabLineNC guibg=NONE ctermbg=NONE
+        hi LineNr guibg=NONE ctermbg=NONE
+        hi LineNrNC guibg=NONE ctermbg=NONE 
+        hi NonText guibg=NONE ctermbg=NONE
+        hi NonTextNC guibg=NONE ctermbg=NONE
+        hi CursorLine guibg=NONE ctermbg=NONE
+        hi CursorLineNC guibg=NONE ctermbg=NONE
+        hi Pmenu guibg=NONE ctermbg=NONE
+        hi PmenuNC guibg=NONE ctermbg=NONE
+        hi PmenuSel guibg=NONE ctermbg=NONE
+        hi PmenuSelNC guibg=NONE ctermbg=NONE
 
+        hi TelescopeNormal guibg=NONE ctermbg=NONE
+        hi TelescopeBorder guibg=NONE ctermbg=NONE
+        hi TelescopePromptNormal guibg=NONE ctermbg=NONE
+        hi TelescopePromptBorder guibg=NONE ctermbg=NONE
+        hi TelescopeResultsNormal guibg=NONE ctermbg=NONE
+        hi TelescopeResultsBorder guibg=NONE ctermbg=NONE
+        hi TelescopePreviewNormal guibg=NONE ctermbg=NONE
+        hi TelescopePreviewBorder guibg=NONE ctermbg=NONE
+
+        hi NvimTreeNormalFloat guibg=NONE
+        hi NvimTreeNormalFloatNC guibg=NONE
+      ]])
     end,
   },
 }

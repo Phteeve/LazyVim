@@ -13,6 +13,16 @@ vim.api.nvim_exec(
   autocmd TabEnter * set foldcolumn=3
   autocmd InsertEnter * silent set nohlsearch
   autocmd BufEnter * silent !echo cd %:p:h > /tmp/lf.socket
+
+  autocmd BufWritePre *.html execute 'lua vim.lsp.buf.format({ async = false })'
+
   ]],
   false
 )
+
+vim.cmd[[
+  augroup highlight_yank
+  autocmd!
+  au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=400})
+  augroup END
+]]

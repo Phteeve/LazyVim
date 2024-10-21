@@ -100,4 +100,10 @@ return {
 		opts = {}, -- for default options, refer to the configuration section for custom setup.
 		cmd = "Trouble",
 	},
+  { 
+    "folke/which-key.nvim",
+    config = function() 
+      require("which-key").setup {} 
+    end
+  },
 }

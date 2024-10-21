@@ -22,33 +22,9 @@ return {
     { 'hrsh7th/cmp-buffer' },   -- Required
     { 'L3MON4D3/LuaSnip' },     -- Required
     { 'saadparwaiz1/cmp_luasnip' },
-    -- { 'jose-elias-alvarez/typescript.nvim' },
-    -- {
-    --   "mfussenegger/nvim-lint",
-    --   event = { "BufReadPre", "BufNewFile" },
-    --   config = function()
-    --     local lint = require("lint")
-    --
-    --     lint.linters_by_ft = {
-    --       javascript = { "eslint" },
-    --       typescript = { "eslint" },
-    --       javascriptreact = { "eslint" },
-    --       typescriptreact = { "eslint" },
-    --     }
-    --
-    --     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-    --
-    --     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-    --       group = lint_augroup,
-    --       callback = function()
-    --         lint.try_lint()
-    --       end,
-    --     })
-    --   end,
-    -- },
-    -- { 'nvimtools/none-ls.nvim' },
-    -- { 'MunifTanjim/eslint.nvim' }
+    { 'jose-elias-alvarez/typescript.nvim' },
   },
+
   config = function()
     vim.diagnostic.config({
       virtual_text = true,
@@ -81,36 +57,6 @@ return {
         })
       end,
       settings = {
-        -- codeAction = {
-        --   disableRuleComment = {
-        --     enable = true,
-        --     location = "separateLine"
-        --   },
-        --   showDocumentation = {
-        --     enable = true
-        --   }
-        -- },
-        -- codeActionOnSave = {
-        --   enable = false,
-        --   mode = "all"
-        -- },
-        -- experimental = {
-        --   useFlatConfig = false
-        -- },
-        -- format = true,
-        -- nodePath = "",
-        -- onIgnoredFiles = "off",
-        -- problems = {
-        --   shortenToSingleLine = false
-        -- },
-        -- quiet = false,
-        -- rulesCustomizations = {},
-        -- run = "onType",
-        -- useESLintClass = false,
-        -- validate = "on",
-        -- workingDirectory = {
-        --   mode = "location"
-        -- }
       }
     })
 
