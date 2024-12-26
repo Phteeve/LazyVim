@@ -65,10 +65,9 @@ return {
 			},
 		},
 	},
-	{
-		"sangdol/mintabline.vim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-	},
+  {
+    "tiagovla/scope.nvim", config = true
+  },
 	{
 		"junegunn/vim-easy-align",
 	},
