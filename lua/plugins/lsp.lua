@@ -8,10 +8,10 @@ return {
       'williamboman/mason-lspconfig.nvim',
       config = function()
         require('mason').setup {
-          ensure_installed = { "eslint_d", "eslint-lsp" },
+          ensure_installed = { "eslint-lsp" },
         }
         require("mason-lspconfig").setup {
-          ensure_installed = { "lua_ls", 'pyright' },
+          ensure_installed = { "lua_ls", 'pyright', 'omnisharp'},
         }
       end
     }, -- Optional
@@ -42,7 +42,7 @@ return {
       },
     })
 
-    require('lspconfig').tsserver.setup({
+    require('lspconfig').ts_ls.setup({
       on_init = function(client)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentFormattingRangeProvider = false
@@ -56,9 +56,10 @@ return {
           command = "EslintFixAll",
         })
       end,
+      root_dir = require('lspconfig').util.root_pattern("eslint.config.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc", ".git", "package.json"),
       settings = {
       }
-    })
+     })
 
      require('lspconfig').pyright.setup({
         settings = {
@@ -69,8 +70,13 @@ return {
             },
           },
         },
+
       })
 
+     require('lspconfig').omnisharp.setup({
+            cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        })
 
     require('lspconfig').lua_ls.setup({
       settings = {
