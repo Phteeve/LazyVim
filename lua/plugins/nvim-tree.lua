@@ -87,6 +87,16 @@ return {
     vim.api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = true })
     vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
 
+    vim.api.nvim_create_autocmd("VimEnter", {
+      callback = function()
+        local bufname = vim.api.nvim_buf_get_name(0)
+        if bufname == "" then
+          require("nvim-tree.api").tree.toggle()
+        end
+      end,
+    })
+    
+
     vim.cmd([[
         :hi NvimTreeNormalFloat guibg=NONE
       ]])

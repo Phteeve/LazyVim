@@ -11,7 +11,7 @@ return {
           ensure_installed = { "eslint-lsp" },
         }
         require("mason-lspconfig").setup {
-          ensure_installed = { "lua_ls", 'pyright', 'omnisharp'},
+          ensure_installed = { "lua_ls", 'pyright' },
         }
       end
     }, -- Optional
