@@ -42,12 +42,12 @@ return {
       },
     })
 
-    require('lspconfig').ts_ls.setup({
-      on_init = function(client)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentFormattingRangeProvider = false
-      end,
-    })
+    -- require('lspconfig').ts_ls.setup({
+    --   on_init = function(client)
+    --     client.server_capabilities.documentFormattingProvider = false
+    --     client.server_capabilities.documentFormattingRangeProvider = false
+    --   end,
+    -- })
 
     require('lspconfig').eslint.setup({
       on_attach = function(client, bufnr)
@@ -71,6 +71,38 @@ return {
           },
         },
 
+      })
+
+      require('lspconfig').pylsp.setup({
+          settings = {
+              pylsp = {
+                  plugins = {
+                      pycodestyle = {
+                          enabled = true,
+                          ignore = {"E501", "E302"},
+                          maxLineLength = 100,
+                      },
+                      yapf = { enabled = true },
+                      pylint = { enabled = false },
+                      flake8 = { enabled = false },
+                      jedi_completion = { fuzzy = true },
+                  },
+              },
+          },
+          on_attach = function(client, bufnr)
+              -- Enable formatting capabilities
+              if client.server_capabilities.documentFormattingProvider then
+                  vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { noremap = true, silent = true })
+              end
+
+              -- Auto-format on save
+              vim.api.nvim_create_autocmd("BufWritePre", {
+                  buffer = bufnr,
+                  callback = function()
+                      vim.lsp.buf.format({ async = false })
+                  end,
+              })
+          end,
       })
 
      require('lspconfig').omnisharp.setup({
