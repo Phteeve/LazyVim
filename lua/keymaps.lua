@@ -32,6 +32,8 @@ map('n', 'gr', ':Telescope lsp_references<CR>', { silent = true })
 map('n', '<leader>fe', [[:lua YankDiagnosticError()<CR>]],
   { noremap = true, silent = true, desc = "Copy error" })
 
+map('n', '<leader>ss', 'ysiw', {desc = "Vim Surround In Word"})
+
 function YankDiagnosticError()
   vim.diagnostic.open_float()
   vim.diagnostic.open_float()
