@@ -34,6 +34,11 @@ map('n', '<leader>fe', [[:lua YankDiagnosticError()<CR>]],
 
 map('n', '<leader>ss', 'ysiw', {desc = "Vim Surround In Word"})
 
+vim.api.nvim_set_keymap("n", "<leader>qn", ":cnext<CR>", { noremap = true, silent = true, desc = "Next quickfix item"})
+vim.api.nvim_set_keymap("n", "<leader>qp", ":cprev<CR>", { noremap = true, silent = true, desc = "Previous quickfix item"})
+vim.api.nvim_set_keymap("n", "<leader>qo", ":copen<CR>", { noremap = true, silent = true, desc = "Open quickfix item"})
+vim.api.nvim_set_keymap("n", "<leader>qc", ":cclose<CR>", { noremap = true, silent = true, desc = "Close quickfix item"})
+
 function YankDiagnosticError()
   vim.diagnostic.open_float()
   vim.diagnostic.open_float()

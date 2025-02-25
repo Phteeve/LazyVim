@@ -42,12 +42,12 @@ return {
       },
     })
 
-    -- require('lspconfig').ts_ls.setup({
-    --   on_init = function(client)
-    --     client.server_capabilities.documentFormattingProvider = false
-    --     client.server_capabilities.documentFormattingRangeProvider = false
-    --   end,
-    -- })
+    require('lspconfig').ts_ls.setup({
+      on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentFormattingRangeProvider = false
+      end,
+    })
 
     require('lspconfig').eslint.setup({
       on_attach = function(client, bufnr)
