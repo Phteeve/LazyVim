@@ -39,6 +39,8 @@ vim.api.nvim_set_keymap("n", "<leader>qp", ":cprev<CR>", { noremap = true, silen
 vim.api.nvim_set_keymap("n", "<leader>qo", ":copen<CR>", { noremap = true, silent = true, desc = "Open quickfix item"})
 vim.api.nvim_set_keymap("n", "<leader>qc", ":cclose<CR>", { noremap = true, silent = true, desc = "Close quickfix item"})
 
+vim.api.nvim_set_keymap('n', '<Leader>ac', ':AvanteClear<CR>', { noremap = true, silent = true })
+
 function YankDiagnosticError()
   vim.diagnostic.open_float()
   vim.diagnostic.open_float()
