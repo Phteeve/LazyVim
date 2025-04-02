@@ -84,8 +84,8 @@ return {
     }
 
     vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>tr', ':NvimTreeRefresh<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>tn', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
 
     vim.api.nvim_create_autocmd("VimEnter", {
       callback = function()

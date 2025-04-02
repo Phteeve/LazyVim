@@ -40,6 +40,7 @@ vim.api.nvim_set_keymap("n", "<leader>qo", ":copen<CR>", { noremap = true, silen
 vim.api.nvim_set_keymap("n", "<leader>qc", ":cclose<CR>", { noremap = true, silent = true, desc = "Close quickfix item"})
 
 vim.api.nvim_set_keymap('n', '<Leader>ac', ':AvanteClear<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>cp', ':let @+ = expand("%:p")<CR>', { noremap = true, silent = true, desc = "Copy file path" })
 
 function YankDiagnosticError()
   vim.diagnostic.open_float()
