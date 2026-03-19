@@ -2,10 +2,13 @@ return {
   'VonHeikemen/lsp-zero.nvim',
   branch = 'v2.x',
   dependencies = {
-    { 'neovim/nvim-lspconfig' },   -- Required
+    { 'neovim/nvim-lspconfig',
+      version = "v0.1.8",
+    },   -- Required
     { 'williamboman/mason.nvim' }, -- Optional
     {
       'williamboman/mason-lspconfig.nvim',
+      version = "v1.31.0",
       config = function()
         require('mason').setup {
           ensure_installed = { "eslint-lsp" },
@@ -42,11 +45,12 @@ return {
       },
     })
 
-    require('lspconfig').ts_ls.setup({
+    require('lspconfig').tsserver.setup({
       on_init = function(client)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentFormattingRangeProvider = false
       end,
+      root_dir = require('lspconfig').util.root_pattern(".git", "package.json", "tsconfig.json"),
     })
 
     require('lspconfig').eslint.setup({
